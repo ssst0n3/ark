@@ -1,0 +1,30 @@
+version: '3'
+services:
+  ark:
+    container_name: ark
+    image: thmhoag/arkserver
+    volumes: 
+      - steam:/home/steam/Steam
+      - ark:/ark
+    ports: 
+      - "27015:27015"
+      - "27015:27015/udp"
+      - "7777:7777"
+      - "7777:7777/udp"
+      - "7778:7778"
+      - "7778:7778/udp"
+      - "7779:7779"
+      - "7779:7779/udp"
+      - "32330:32330"
+    environment: 
+      - am_ark_SessionName=my_ark
+      - am_ark_GameModIds="889745138,751991809,1404697612"
+      - am_ark_ServerPVE=True
+    restart: always
+
+volumes: 
+  steam:
+    name: steam
+  ark:
+    name: ark
+
